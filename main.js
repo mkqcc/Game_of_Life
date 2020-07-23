@@ -51,6 +51,8 @@ const paint = () => {
   // HINT:
   //   https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
   //   https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName
+  
+  document.getElementsByTagName('td')
 };
 
 /**
