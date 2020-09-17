@@ -20,10 +20,6 @@ class GameOfLife {
         return !(row < 0 || row >= this.height || column < 0 || column >= this.width)
     }
 
-    getCell(row, column) {
-        return this.board[row][column]
-    }
-
     livingNeighbors(row, col) {
         let count = 0
         if (this.isValid(row - 1, col) && this.board[row - 1][col] !== 0)
@@ -47,9 +43,10 @@ class GameOfLife {
 
     tick() {
         const newBoard = this.makeBoard();
-        for (let r = 0; r < this.height; r++) {
+        for (let r = 0; r < this.width; r++) {
             let columns = []
-            for (let c = 0; c < this.width; c++) {
+            for (let c = 0; c < this.height; c++) {
+                console.log(this.board[r][c])
                 let value = this.board[r][c]
                 columns[c] = value;
                 let neighbors = this.livingNeighbors(r, c)
@@ -65,4 +62,39 @@ class GameOfLife {
         }
         this.board = newBoard;
     }
+
+    reset() {
+        this.board = this.makeBoard()
+    }
+
+    randomize() {
+        const board = [];
+        for (let i = 0; i < this.height; i++) {
+            board[i] = [];
+            for (let j = 0; j < this.width; j++) {
+                board[i][j] = Math.floor(Math.random() * 2);
+            }
+        }
+        this.board = board;
+    }
 }
+
+let g = new GameOfLife(4, 2)
+g.board[0][1] = 1
+g.board[0][2] = 1
+g.board[1][0] = 1
+g.board[1][1] = 1
+g.board[1][2] = 1
+g.board[1][3] = 1
+
+
+console.log(g.board)
+
+g.tick()
+console.log(g.board)
+
+g.tick()
+console.log(g.board)
+
+g.tick()
+console.log(g.board)
