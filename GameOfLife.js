@@ -86,15 +86,3 @@ g.board[1][0] = 1
 g.board[1][1] = 1
 g.board[1][2] = 1
 g.board[1][3] = 1
-
-
-console.log(g.board)
-
-g.tick()
-console.log(g.board)
-
-g.tick()
-console.log(g.board)
-
-g.tick()
-console.log(g.board)
